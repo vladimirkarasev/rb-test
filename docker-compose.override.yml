@@ -1,0 +1,3 @@
+services:
+  php74-service:
+    user: 1000:1000

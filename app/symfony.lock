@@ -11,6 +11,35 @@
             "config/routes/annotations.yaml"
         ]
     },
+    "doctrine/doctrine-bundle": {
+        "version": "2.7",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "2.3",
+            "ref": "06cff6e09c2f454bf6d8fca915ee25e1bb4d04cd"
+        },
+        "files": [
+            "config/packages/doctrine.yaml",
+            "config/packages/prod/doctrine.yaml",
+            "config/packages/test/doctrine.yaml",
+            "src/Entity/.gitignore",
+            "src/Repository/.gitignore"
+        ]
+    },
+    "doctrine/doctrine-migrations-bundle": {
+        "version": "2.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "2.2",
+            "ref": "baaa439e3e3179e69e3da84b671f0a3e4a2f56ad"
+        },
+        "files": [
+            "config/packages/doctrine_migrations.yaml",
+            "migrations/.gitignore"
+        ]
+    },
     "symfony/console": {
         "version": "4.4",
         "recipe": {
@@ -87,5 +116,11 @@
             "config/packages/twig.yaml",
             "templates/base.html.twig"
         ]
+    },
+    "symfony/validator": {
+        "version": "4.4",
+        "recipe": {
+            "version": "4.3"
+        }
     }
 }

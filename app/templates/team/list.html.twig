@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+{% block body %}
+    <h2>Список команд</h2>
+    <div style="margin-bottom: 40px;"><a href="{{ path('app_teams_create') }}">Добавить команду</a></div>
+
+    {% if teams|length > 0 %}
+        {% for team in teams %}
+            <div>
+                id{{ team.id }}:{{ team.name }} <a href="{{ path('app_teams_delete', {id: team.id}) }}">Удалить</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div>Не найдено ни одной команды.</div>
+    {% endif %}
+{% endblock %}

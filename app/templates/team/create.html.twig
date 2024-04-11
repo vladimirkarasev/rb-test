@@ -2,5 +2,6 @@
 
 {% block body %}
     <h2>Создание команды</h2>
+    <div style="margin-bottom: 40px;"><a href="{{ path('app_teams_list') }}">К списку команд</a></div>
     {{ form(team_form) }}
 {% endblock %}

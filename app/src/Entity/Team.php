@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\TeamRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=TeamRepository::class)
@@ -21,6 +22,11 @@ class Team
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $name;
+
+    public function __construct()
+    {
+
+    }
 
     public function getId(): ?int
     {

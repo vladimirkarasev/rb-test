@@ -1,0 +1,15 @@
+{% extends 'layout.html.twig' %}
+{% block body %}
+    <h2>Список турниров</h2>
+    <div style="margin-bottom: 40px;"><a href="{{ path('app_tournaments_create') }}">Добавить турнир</a></div>
+
+    {% if tournaments|length > 0 %}
+        {% for team in teams %}
+            <div>
+                id{{ team.id }}:{{ team.name }} <a href="{{ path('app_tournaments_delete', {id: team.id}) }}">Удалить</a>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div>Не найдено ни одного турнира.</div>
+    {% endif %}
+{% endblock %}

@@ -2,15 +2,19 @@
 
 namespace App\Entity;
 
+use App\Repository\TeamRepository;
 use App\Repository\TournamentsRepository;
 use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * @ORM\Entity(repositoryClass=TournamentsRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity("slug")
  */
 class Tournaments
@@ -29,6 +33,7 @@ class Tournaments
 
     /**
      * @ORM\Column(type="text", nullable=true, unique=true)
+     * @Gedmo\Slug(fields={"name"}, unique=true)
      */
     private $slug;
 
@@ -43,9 +48,11 @@ class Tournaments
      */
     private $teams;
 
-    public function __construct()
+    public function __construct(TeamRepository $teamRepository)
     {
-        $this->teams = new ArrayCollection();
+        $this->teams = new ArrayCollection(
+            $teamRepository->findAll()
+        );
     }
 
 
@@ -78,9 +85,9 @@ class Tournaments
         return $this;
     }
 
-    public function computeSlug()
+    public function __toString()
     {
-
+        return (new \DateTime())->format('YmdHis') . $this->getName();
     }
 
     public function getCreatedAt(): ?DateTimeImmutable

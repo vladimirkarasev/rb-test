@@ -1,0 +1,28 @@
+{% extends 'layout.html.twig' %}
+{% block body %}
+    <h2>Турнир "{{ tournament.name }}"</h2>
+    <div style="margin-bottom: 40px;"><a href="{{ path('app_tournaments_list') }}">Список турниров</a></div>
+
+    <div>
+        <h3>Список команд</h3>
+        {% if tournament.teams|length > 0 %}
+            {% for team in tournament.teams %}
+                <div>id{{ team.id }}:{{ team.name }}</div>
+            {% endfor %}
+        {% else %}
+            <div>Список команд пуст</div>
+        {% endif %}
+    </div>
+    <div>
+        <h3>Турнирная таблица</h3>
+        {% set count = 1 %}
+        {% for grid in tournament_grid %}
+            <h4>День {{ count }}</h4>
+            {% for meeting in grid.getTournamentMeetingCollection %}
+                <div>{{ meeting }}</div>
+            {% endfor %}
+
+            {% set count = count + 1 %}
+        {% endfor %}
+    </div>
+{% endblock %}

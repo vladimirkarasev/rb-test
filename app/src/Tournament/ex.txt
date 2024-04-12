@@ -1,0 +1,46 @@
+k1-k2
+k1-k3
+k1-k4
+k1-k5
+k1-k6
+k2-k3
+k2-k4
+k2-k5
+k2-k6
+k3-k4
+k3-k5
+k3-k6
+k4-k5
+k4-k6
+k5-k6
+
+Итого: 15 встреч
+
+Перебираем каждый элемент массива.
+
+$result = [];
+$selectedTeams = [];
+$selectedTeamsFromDay = [];
+
+Начало перебирание:
+1 день. (Начало)
+$selectedTeamsFromDay = [];
+k1-k2
+$selectedTeamsFromDay[] = k1;
+$selectedTeamsFromDay[] = k2;
+$selectedTeams[] = 'k1-k2'; (md5)
+k3-k4
+$selectedTeamsFromDay[] = k3;
+$selectedTeamsFromDay[] = k4;
+$selectedTeams[] = 'k3-k4'; (md5)
+k5-k6
+$selectedTeamsFromDay[] = k5;
+$selectedTeamsFromDay[] = k6;
+$selectedTeams[] = 'k5-k6'; (md5)
+1 день. (Конец)
+
+2 день. (Начало)
+
+2 день. (Конец)
+
+Конец перебирание.

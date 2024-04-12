@@ -4,9 +4,9 @@
     <div style="margin-bottom: 40px;"><a href="{{ path('app_tournaments_create') }}">Добавить турнир</a></div>
 
     {% if tournaments|length > 0 %}
-        {% for team in teams %}
+        {% for tournament in tournaments %}
             <div>
-                id{{ team.id }}:{{ team.name }} <a href="{{ path('app_tournaments_delete', {id: team.id}) }}">Удалить</a>
+                id{{ tournament.id }}:{{ tournament.name }}  <a href="{{ path('app_tournaments_view', {slug: tournament.slug}) }}">Перейти</a> <a href="{{ path('app_tournaments_delete', {id: tournament.id}) }}">Удалить</a>
             </div>
         {% endfor %}
     {% else %}

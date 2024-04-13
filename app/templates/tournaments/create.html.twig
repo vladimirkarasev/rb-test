@@ -1,0 +1,7 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <h2>Создание турнира</h2>
+    <div style="margin-bottom: 40px;"><a href="{{ path('app_tournaments_list') }}">К списку турниров</a></div>
+    {{ form(tournaments_form) }}
+{% endblock %}
